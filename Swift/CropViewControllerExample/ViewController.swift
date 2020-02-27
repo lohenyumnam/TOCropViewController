@@ -22,6 +22,7 @@ class ViewController: UIViewController, CropViewControllerDelegate, UIImagePicke
         guard let image = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage) else { return }
         
         let cropController = CropViewController(croppingStyle: croppingStyle, image: image)
+        //cropController.modalPresentationStyle = .fullScreen
         cropController.delegate = self
         
         // Uncomment this if you wish to provide extra instructions via a title label
@@ -46,6 +47,10 @@ class ViewController: UIViewController, CropViewControllerDelegate, UIImagePicke
         //cropController.doneButtonTitle = "Title"
         //cropController.cancelButtonTitle = "Title"
         
+        //cropController.toolbar.doneButtonHidden = true
+        //cropController.toolbar.cancelButtonHidden = true
+        //cropController.toolbar.clampButtonHidden = true
+
         self.image = image
         
         //If profile picture, push onto the same navigation stack
@@ -82,7 +87,7 @@ class ViewController: UIViewController, CropViewControllerDelegate, UIImagePicke
         imageView.image = image
         layoutImageView()
         
-        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        self.navigationItem.leftBarButtonItem?.isEnabled = true
         
         if cropViewController.croppingStyle != .circular {
             imageView.isHidden = true
@@ -91,7 +96,8 @@ class ViewController: UIViewController, CropViewControllerDelegate, UIImagePicke
                                                    toView: imageView,
                                                    toFrame: CGRect.zero,
                                                    setup: { self.layoutImageView() },
-                                                   completion: { self.imageView.isHidden = false })
+                                                   completion: {
+                                                    self.imageView.isHidden = false })
         }
         else {
             self.imageView.isHidden = false
@@ -105,9 +111,9 @@ class ViewController: UIViewController, CropViewControllerDelegate, UIImagePicke
         title = NSLocalizedString("CropViewController", comment: "")
         navigationController!.navigationBar.isTranslucent = false
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped(sender:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharePhoto))
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped(sender:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharePhoto))
+        navigationItem.leftBarButtonItem?.isEnabled = false
         
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFit

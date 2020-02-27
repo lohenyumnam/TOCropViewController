@@ -95,7 +95,7 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
      The view controller's delegate that will receive the resulting
      cropped image, as well as crop information.
     */
-    public var delegate: CropViewControllerDelegate? {
+    public weak var delegate: CropViewControllerDelegate? {
         didSet { self.setUpDelegateHandlers() }
     }
     
@@ -257,6 +257,26 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         get { return toCropViewController.aspectRatioPickerButtonHidden }
     }
     
+    /**
+     When enabled, hides the 'Done' button on the toolbar.
+
+     Default is false.
+     */
+    public var doneButtonHidden: Bool {
+        set { toCropViewController.doneButtonHidden = newValue }
+        get { return toCropViewController.doneButtonHidden }
+    }
+    
+    /**
+     When enabled, hides the 'Cancel' button on the toolbar.
+
+     Default is false.
+     */
+    public var cancelButtonHidden: Bool {
+        set { toCropViewController.cancelButtonHidden = newValue }
+        get { return toCropViewController.cancelButtonHidden }
+    }
+
     /**
      If `showActivitySheetOnDone` is true, then these activity items will
      be supplied to that UIActivityViewController in addition to the
@@ -557,6 +577,7 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
 
 extension CropViewController {
     fileprivate func setUpCropController() {
+        modalPresentationStyle = .fullScreen
         addChild(toCropViewController)
         transitioningDelegate = (toCropViewController as! UIViewControllerTransitioningDelegate)
         toCropViewController.delegate = self

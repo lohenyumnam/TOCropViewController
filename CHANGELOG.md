@@ -1,20 +1,58 @@
 x.y.z Release Notes (yyyy-MM-dd)
 =============================================================
 
+2.5.2 Release Notes (2019-10-23)
+=============================================================
+
+## Added
+
+* Brazilian Portuguese Language Support ([#380](https://github.com/TimOliver/TOCropViewController/issues/380))
+
+## Fixed
+
+* A visual glitch that would occur in iOS 13 because the Swift view controller wasn't explicitly marked as full screen. ([#385](https://github.com/TimOliver/TOCropViewController/issues/385))
+* A visual glitch where the image would snap upwards during the presentation animation on non-Face ID devices. ([#387](https://github.com/TimOliver/TOCropViewController/issues/387))
+* A bug where subclassing the class in Swift would fail because it wasn't using the desginated initializer. ([#379](https://github.com/TimOliver/TOCropViewController/issues/379))
+
+2.5.1 Release Notes (2019-07-08)
+=============================================================
+
+## Added
+
+* Finnish Language Support ([#360](https://github.com/TimOliver/TOCropViewController/pull/360))
+
+## Enhancements
+
+* Improved the UX of the cancellation dialog by changing the buttons from affirmative actions to explicit actions. ([#362](https://github.com/TimOliver/TOCropViewController/pull/362))
+
+## Fixed
+* A crash that would occur if the cancellation confirmation dialog was attempted to be displayed on iPad. ([#362](https://github.com/TimOliver/TOCropViewController/pull/362))
+
+2.5.0 Release Notes (2019-04-21)
+=============================================================
+
+## Added
+- Swift 5.0 Support ([#343](https://github.com/TimOliver/TOCropViewController/pull/343))
+- Persian Language Support ([#337](https://github.com/TimOliver/TOCropViewController/pull/337))
+- Added `customAspectRatioName` property to expose the custom aspect ratio as a selectable choice ([#344](https://github.com/TimOliver/TOCropViewController/pull/344))
+
+## Fixed
+- Made delegate in `CropViewController` weak. ([#338](https://github.com/TimOliver/TOCropViewController/pull/338))
+
 2.4.0 Release Notes (2018-12-01)
 =============================================================
 
 ## Added
 - Swift 4.2 Support
-- Romanian and Hungarian localizations
-- The ability to show only certain aspect ratios
-- A setting to allow confirmation before cancelling a crop
+- Romanian and Hungarian localizations.
+- The ability to show only certain aspect ratios.
+- A setting to allow confirmation before cancelling a crop.
 
 ## Fixed
 - Fixed layout issue on the new iPad Pro
-- Fixed issues with the aspect ratio settings when zooming out
-- Fixed an issue when rotating images would sometimes break
-- A bug where the completion handler of the cropping operation wouldn't fire
+- Fixed issues with the aspect ratio settings when zooming out.
+- Fixed an issue when rotating images would sometimes break.
+- A bug where the completion handler of the cropping operation wouldn't fire.
 
 ## Removed
 - iOS 7 Support
